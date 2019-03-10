@@ -71,7 +71,6 @@ class MapReduce(object):
         await asyncio.gather(*self.map_tasks)
         print('All map tasks finished')
 
-        print('Waiting for all tasks to finish')
         await self.orchestrator.flush()
         print('All reduce tasks finished')
 

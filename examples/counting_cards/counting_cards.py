@@ -27,4 +27,7 @@ if __name__ == '__main__':
     stack_dir = os.path.join(os.path.dirname(__file__), 'card_stacks')
     file_paths = [os.path.join(stack_dir, stack) for stack in os.listdir(stack_dir)]
     map_reduce = MapReduce(file_paths, map_func, reduce_func)
-    print(asyncio.run(map_reduce.run()))
+
+    result = asyncio.run(map_reduce.run())
+    print('\nResults:')
+    print(result)
