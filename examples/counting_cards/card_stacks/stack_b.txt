@@ -1,0 +1,10 @@
+King Diamonds
+King Clubs
+Eight Diamonds
+Two Spades
+Jack Spades
+Ace Clubs
+Six Clubs
+Ten Spades
+Seven Diamonds
+Ten Diamonds
