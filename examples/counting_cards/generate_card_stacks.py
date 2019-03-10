@@ -8,7 +8,7 @@ if __name__ == '__main__':
     for stack_key in ['a', 'b', 'c']:
         filepath = os.path.join(stack_dir, 'stack_{}.txt'.format(stack_key))
         with open(filepath, 'w+') as f:
-            for _ in range(10):
+            for _ in range(200):
                 f.write('{value} {suit}\n'.format(
                     value=random.choice(list(Card.VALUES.keys())),
                     suit=random.choice(Card.SUITS)

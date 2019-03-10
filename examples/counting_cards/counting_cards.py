@@ -11,7 +11,7 @@ etc.
 import os
 import asyncio
 import functools
-from map_reduce.orchestrator import Orchestrator
+from map_reduce.map_reduce import MapReduce
 from examples.counting_cards.card import Card
 
 def map_func(file_path):
@@ -26,5 +26,5 @@ def reduce_func(values):
 if __name__ == '__main__':
     stack_dir = os.path.join(os.path.dirname(__file__), 'card_stacks')
     file_paths = [os.path.join(stack_dir, stack) for stack in os.listdir(stack_dir)]
-    orch = Orchestrator(file_paths, map_func, reduce_func)
-    print(asyncio.run(orch.run()))
+    map_reduce = MapReduce(file_paths, map_func, reduce_func)
+    print(asyncio.run(map_reduce.run()))

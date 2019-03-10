@@ -1,6 +1,10 @@
 class Reducer(object):
-    def __init__(self, reduce_func):
+    def __init__(self, reduce_func, orchestrator):
         self.reduce = reduce_func
+        self.orchestrator = orchestrator
 
-    def run(self, key, values):
-        return (key, self.reduce(values))
+    async def run(self, key, values):
+        self.emit((key, self.reduce(values)))
+
+    def emit(self, data):
+        self.orchestrator.receive(data)
