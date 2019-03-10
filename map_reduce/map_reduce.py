@@ -36,12 +36,6 @@ class Orchestrator(object):
         print('Waiting for final tasks')
         await asyncio.gather(*self.reducer_tasks)
 
-    def result(self):
-        result = ''
-        for key, value in self.mapped_data.items():
-            result += '{key}: {value}\n'.format(key=key, value=value[0])
-        return result
-
     def _create_reducer_task(self, key, data):
         print('Creating reducer for key: {}, values: {}'.format(key, data))
         reducer_task = asyncio.create_task(
@@ -74,7 +68,7 @@ class MapReduce(object):
         await self.orchestrator.flush()
         print('All reduce tasks finished')
 
-        return self.orchestrator.result()
+        return self.result()
 
     def instantiate_mappers(self):
         for file_path in self.file_paths:
@@ -85,3 +79,6 @@ class MapReduce(object):
 
     def instantiate_worker(self, worker_func, file_path):
         return asyncio.create_task(worker_func.run(file_path))
+
+    def result(self):
+        return {key: values[0] for key, values in self.orchestrator.mapped_data.items()}

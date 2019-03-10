@@ -30,4 +30,5 @@ if __name__ == '__main__':
 
     result = asyncio.run(map_reduce.run())
     print('\nResults:')
-    print(result)
+    for key, value in result.items():
+        print('{key}: {value}'.format(key=key, value=value[0]))
