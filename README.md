@@ -11,3 +11,8 @@ Generate new seed data:
 ```bash
 python3 -m examples.counting_cards.generate_card_stacks
 ```
+
+Run Tests:
+```bash
+python3 -m tests.map_reduce_test
+```
