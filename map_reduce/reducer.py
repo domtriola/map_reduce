@@ -4,7 +4,7 @@ class Reducer(object):
         self.orchestrator = orchestrator
 
     async def run(self, key, values):
-        self.emit((key, self.reduce(values)))
+        await self.emit((key, self.reduce(values)))
 
-    def emit(self, data):
-        self.orchestrator.receive(data)
+    async def emit(self, data):
+        await self.orchestrator.receive(data)

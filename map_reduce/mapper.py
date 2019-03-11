@@ -5,7 +5,7 @@ class Mapper(object):
 
     async def run(self, file_path):
         for data in self.map(file_path):
-            self.emit(data)
+            await self.emit(data)
 
-    def emit(self, data):
-        self.orchestrator.receive(data)
+    async def emit(self, data):
+        await self.orchestrator.receive(data)
